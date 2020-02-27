@@ -1,0 +1,47 @@
+- model_class = Event
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
+
+%p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  = @event.title
+%p
+  %strong= model_class.human_attribute_name(:sub_title) + ':'
+  %br
+  = @event.sub_title
+%p
+  %strong= model_class.human_attribute_name(:category) + ':'
+  %br
+  = @event.category
+%p
+  %strong= model_class.human_attribute_name(:start_time) + ':'
+  %br
+  = @event.start_time
+%p
+  %strong= model_class.human_attribute_name(:end_time) + ':'
+  %br
+  = @event.end_time
+%p
+  %strong= model_class.human_attribute_name(:description) + ':'
+  %br
+  = @event.description
+%p
+  %strong= model_class.human_attribute_name(:event_url) + ':'
+  %br
+  = @event.event_url
+%p
+  %strong= model_class.human_attribute_name(:marked_as_deleted) + ':'
+  %br
+  = @event.marked_as_deleted
+%p
+  %strong= model_class.human_attribute_name(:last_crawled_at) + ':'
+  %br
+  = @event.last_crawled_at
+%p
+  %strong= model_class.human_attribute_name(:web_resource_id) + ':'
+  %br
+  = @event.web_resource_id
+
+
+= link_to t('.back', :default => t("helpers.links.back")), events_path, :class => 'btn btn-default'

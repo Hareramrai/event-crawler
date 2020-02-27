@@ -1,0 +1,13 @@
+
+=form_tag(events_path, method: :get, class: 'form-inline') do
+
+  .form-group.mb-2
+    =text_field_tag :search, params[:search], placeholder: 'Search', class: 'form-control'
+
+  .form-group.mx-sm-3.mb-2
+    =text_field_tag :date_range, params[:date_range], placeholder: 'Dates', class: 'form-control'
+
+  .form-group.mx-sm-3.mb-2
+    = select_tag :web_resource, options_from_collection_for_select(WebResource.all, 'id', 'name', params[:web_resource]), class: 'form-control', prompt: 'Select WebResource'
+
+  =button_tag 'Submit' , class: 'btn btn-primary mb-2' , type: :submit

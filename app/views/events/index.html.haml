@@ -1,0 +1,36 @@
+- model_class = Event
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+
+= render partial: 'search'
+
+= paginate @events, theme: 'twitter-bootstrap-4'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:sub_title)
+      %th= model_class.human_attribute_name(:category)
+      %th= model_class.human_attribute_name(:start_time)
+      %th= model_class.human_attribute_name(:end_time)
+      %th= model_class.human_attribute_name(:description)
+      %th= model_class.human_attribute_name(:last_crawled_at)
+      %th= model_class.human_attribute_name(:web_resource_id)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td= link_to event.id, event_path(event)
+        %td= link_to event.title, event.event_url
+        %td= event.sub_title
+        %td= event.category
+        %td= event.start_time
+        %td= event.end_time
+        %td= event.description
+        %td= event.last_crawled_at
+        %td= event.web_resource_name
+        %td
+          = link_to t('.show', :default => t("helpers.links.show")), event_path(event), :class => 'btn btn-default btn-xs'
+
